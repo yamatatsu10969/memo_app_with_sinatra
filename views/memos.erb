@@ -11,11 +11,11 @@
 <button type="button" onclick="location.href='/memos/new'">新規メモ作成</button>
 <ul>
   <% @memos.each do |memo| %>
-    <ol>
+    <li>
       <a href="/memos/<%= memo.id %>">
         <%= memo.title %>
       </a>
-    </ol>
+    </li>
   <% end %>
 </ul>
 </body>
