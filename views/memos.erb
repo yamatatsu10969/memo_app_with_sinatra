@@ -8,6 +8,15 @@
 </head>
 <body>
 <h1>メモ一覧</h1>
-<p>メモを書き込む</p>
+<button type="button" onclick="location.href='/memos/new'">新規メモ作成</button>
+<ul>
+  <% @memos.each do |memo| %>
+    <ol>
+      <a href="/memos/<%= memo.id %>">
+        <%= memo.title %>
+      </a>
+    </ol>
+  <% end %>
+</ul>
 </body>
 </html>
