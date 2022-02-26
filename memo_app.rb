@@ -5,7 +5,7 @@ require 'sinatra/reloader'
 require_relative 'db/memo_database'
 
 get '/memos' do
-  @memos = MemoDatabase.memo_all
+  @memos = MemoDatabase.all
   erb :memos
 end
 
@@ -15,6 +15,7 @@ end
 
 get '/memos/:id' do
   id = params[:id]
+  @memo = MemoDatabase.find(id)
   erb :memo
 end
 

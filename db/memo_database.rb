@@ -11,24 +11,24 @@ class MemoDatabase
   MEMOS_KEY = 'memo_list'
   MEMOS_KEY.freeze
 
-  def self.memo(id)
-    memo_all.find { |memo| memo.id == id }
+  def self.find(id)
+    all.find { |memo| memo.id == id }
   end
 
-  def self.memo_all
+  def self.all
     memo_hash_array = JSON.parse(load_file)[MEMOS_KEY]
     memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
   end
 
   def self.create(title, description)
-    memo_list = memo_all
+    memo_list = all
     memo = Memo.new(SecureRandom.uuid, title, description)
     memo_list.push(memo)
     save_file(memo_list)
   end
 
   def self.update(update_memo)
-    updated_memo_list = memo_all.map do |memo|
+    updated_memo_list = all.map do |memo|
       if memo.id == update_memo.id
         update_memo
       else
@@ -39,7 +39,7 @@ class MemoDatabase
   end
 
   def self.delete(id)
-    save_file(memo_all.delete_if { |memo| memo.id == id }) if memo(id)
+    save_file(all.delete_if { |memo| memo.id == id }) if find(id)
   end
 
   def self.save_file(memo_list)
