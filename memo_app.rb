@@ -2,7 +2,10 @@
 
 require 'sinatra'
 require 'sinatra/reloader'
+require 'erubi'
 require_relative 'db/memo_database'
+
+set :erb, escape_html: true
 
 get '/memos' do
   @memos = MemoDatabase.all
