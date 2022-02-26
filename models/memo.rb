@@ -1,7 +1,8 @@
 require 'json'
 
 class Memo
-  attr_reader :id, :title, :description
+  attr_reader :id
+  attr_accessor :title, :description
 
   def initialize(id, title, description)
     @id = id
