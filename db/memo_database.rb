@@ -16,8 +16,12 @@ class MemoDatabase
   end
 
   def self.all
-    memo_hash_array = JSON.parse(load_file)[MEMOS_KEY]
-    memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
+    if load_file
+      []
+    else
+      memo_hash_array = JSON.parse(load_file)[MEMOS_KEY]
+      memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
+    end
   end
 
   def self.create(title, description)
