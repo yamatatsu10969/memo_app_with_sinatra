@@ -4,7 +4,7 @@ require 'securerandom'
 require_relative '../models/memo'
 
 # ファイルへのCRUDを行う
-class MemoDatabaseHelper
+class MemoDatabase
   DATABASE_FILE_NAME = 'database'
   DATABASE_FILE_NAME.freeze
 
@@ -17,11 +17,7 @@ class MemoDatabaseHelper
 
   def self.memo_all
     memo_hash_array = JSON.parse(load_file)[MEMOS_KEY]
-    if memo_hash_array.nil?
-      []
-    else
-      memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
-    end
+    memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
   end
 
   def self.create(title, description)
@@ -56,6 +52,10 @@ class MemoDatabaseHelper
   end
 
   def self.load_file
-    JSON.load_file(DATABASE_FILE_NAME)
+    if File.zero?(DATABASE_FILE_NAME)
+      '{}'
+    else
+      JSON.load_file(DATABASE_FILE_NAME)
+    end
   end
 end

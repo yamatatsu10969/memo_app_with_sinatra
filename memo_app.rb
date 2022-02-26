@@ -2,9 +2,10 @@
 
 require 'sinatra'
 require 'sinatra/reloader'
-require_relative 'helpers/memo_database_helper'
+require_relative 'db/memo_database'
 
 get '/memos' do
+  @memos = MemoDatabase.memo_all
   erb :memos
 end
 
@@ -25,6 +26,6 @@ end
 post '/memos' do
   title = params[:title]
   description = params[:description]
-  MemoDatabaseHelper.create(title, description)
+  MemoDatabase.create(title, description)
   redirect :memos
 end
