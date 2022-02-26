@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'securerandom'
+require_relative '../models/memo'
 
 # ファイルへのCRUDを行う
 class MemoDatabaseHelper
@@ -16,7 +17,11 @@ class MemoDatabaseHelper
 
   def self.memo_all
     memo_hash_array = JSON.parse(load_file)[MEMOS_KEY]
-    memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
+    if memo_hash_array.nil?
+      []
+    else
+      memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
+    end
   end
 
   def self.create(title, description)
