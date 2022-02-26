@@ -3,11 +3,20 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-get '/' do
-  # 'hello'
-  'good bye!!!!!!!'
+get '/memos' do
+  erb :memos
 end
 
-get '/path/to' do
-  'this is [/path/to]'
+get '/memos/new' do
+  erb :new
+end
+
+get '/memos/:id' do
+  id = params[:id]
+  erb :memo
+end
+
+get '/memos/:id/edit' do
+  id = params[:id]
+  erb :edit
 end
