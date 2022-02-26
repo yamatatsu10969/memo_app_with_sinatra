@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     daemons (1.4.1)
+    erubi (1.10.0)
     eventmachine (1.2.7)
     multi_json (1.15.0)
     mustermann (1.1.1)
@@ -31,6 +32,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  erubi
   sinatra
   sinatra-contrib
   thin
