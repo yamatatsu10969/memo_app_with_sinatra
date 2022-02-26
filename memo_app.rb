@@ -40,3 +40,9 @@ patch '/memos/:id' do
   MemoDatabase.update(memo)
   redirect :memos
 end
+
+delete '/memos/:id' do
+  id = params[:id]
+  MemoDatabase.delete(id)
+  redirect :memos
+end
