@@ -21,6 +21,7 @@ end
 
 get '/memos/:id/edit' do
   id = params[:id]
+  @memo = MemoDatabase.find(id)
   erb :edit
 end
 
@@ -28,5 +29,14 @@ post '/memos' do
   title = params[:title]
   description = params[:description]
   MemoDatabase.create(title, description)
+  redirect :memos
+end
+
+patch '/memos/:id' do
+  id = params[:id]
+  title = params[:title]
+  description = params[:description]
+  memo = Memo.new(id, title, description)
+  MemoDatabase.update(memo)
   redirect :memos
 end

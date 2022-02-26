@@ -7,6 +7,18 @@
   <title>メモアプリ</title>
 </head>
 <body>
-<h1>編集</h1>
+<h1>メモアプリ</h1>
+<form action="/memos/<%= @memo.id %>" method="post">
+  <input name="_method" type="hidden" value="patch"/>
+  <p>
+    <input type="text" name="title" id="title" value="<%= @memo.title %>"/>
+  </p>
+  <p>
+    <textarea name="body" id="body" cols="30" rows="10"><%= @memo.description %></textarea>
+  </p>
+  <p>
+    <input type="submit" value="更新"/>
+  </p>
+</form>
 </body>
 </html>
