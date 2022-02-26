@@ -15,5 +15,8 @@
   <%= @memo.description %>
 </p>
 
+<button type="button" onclick="location.href='/memos/<%= @memo.id %>/edit'">編集</button>
+<button type="button" onclick="location.href='/memos/<%= @memo.id %>/delete'">削除</button>
+
 </body>
 </html>
