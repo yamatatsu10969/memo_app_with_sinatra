@@ -57,7 +57,7 @@ class MemoDatabase
 
   def self.load_file
     if File.zero?(DATABASE_FILE_NAME)
-      '{}'
+      nil
     else
       JSON.load_file(DATABASE_FILE_NAME)
     end
