@@ -14,11 +14,11 @@
     <input name="_method" type="hidden" value="patch"/>
     <div class="mb-3">
       <label for="title" class="form-label">タイトル</label>
-      <input type="text" name="title" class="form-control"/>
+      <input type="text" name="title" class="form-control" value="<%= @memo.title %>"/>
     </div>
     <div class="mb-3">
       <label for="title" class="form-label">詳細</label>
-      <textarea name="description" class="form-control"></textarea>
+      <textarea name="description" class="form-control"><%= @memo.description %></textarea>
     </div>
     <div class="mb-3">
       <input type="submit" value="編集" class="btn btn-primary"/>
