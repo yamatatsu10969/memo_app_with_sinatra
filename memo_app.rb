@@ -12,6 +12,13 @@ get '/memos' do
   erb :memos
 end
 
+post '/memos' do
+  title = params[:title]
+  description = params[:description]
+  MemoDatabase.create(title, description)
+  redirect :memos
+end
+
 get '/memos/new' do
   erb :new
 end
@@ -19,20 +26,20 @@ end
 get '/memos/:id' do
   id = params[:id]
   @memo = MemoDatabase.find(id)
+  pass if @memo.nil?
   erb :memo
 end
 
 get '/memos/:id/edit' do
   id = params[:id]
   @memo = MemoDatabase.find(id)
+  pass if @memo.nil?
   erb :edit
 end
 
-post '/memos' do
-  title = params[:title]
-  description = params[:description]
-  MemoDatabase.create(title, description)
-  redirect :memos
+# 404
+get '/*' do
+  'not found'
 end
 
 patch '/memos/:id' do
