@@ -39,7 +39,7 @@ end
 
 # 404
 get '/*' do
-  'not found'
+  erb :not_found
 end
 
 patch '/memos/:id' do
