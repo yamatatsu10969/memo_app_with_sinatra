@@ -44,6 +44,9 @@ end
 
 patch '/memos/:id' do
   id = params[:id]
+  @memo = MemoDatabase.find(id)
+  pass if @memo.nil?
+
   title = params[:title]
   description = params[:description]
   memo = Memo.new(id, title, description)
