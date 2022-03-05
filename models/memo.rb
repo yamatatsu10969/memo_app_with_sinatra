@@ -6,14 +6,10 @@ class Memo
   attr_reader :id
   attr_accessor :title, :description
 
-  def initialize(id, title, description)
-    @id = id
-    @title = title
-    @description = description
-  end
-
-  def self.json_create(object)
-    new(object['id'], object['title'], object['description'])
+  def initialize(args = {})
+    @id = args[:id]
+    @title = args[:title]
+    @description = args[:description]
   end
 
   def as_json(*)

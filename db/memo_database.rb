@@ -8,7 +8,7 @@ class MemoDatabase
   DATABASE_FILE_NAME = 'database'
   DATABASE_FILE_NAME.freeze
 
-  MEMOS_KEY = 'memo_list'
+  MEMOS_KEY = :memo_list
   MEMOS_KEY.freeze
 
   def self.find(id)
@@ -17,8 +17,8 @@ class MemoDatabase
 
   def self.all
     if load_file
-      memo_hash_array = JSON.parse(load_file)[MEMOS_KEY]
-      memo_hash_array.map { |memo_hash| Memo.json_create(memo_hash) }
+      memo_hash_array = JSON.parse(load_file, { symbolize_names: true })[MEMOS_KEY]
+      memo_hash_array.map { |memo_hash| Memo.new(memo_hash) }
     else
       []
     end
@@ -26,7 +26,7 @@ class MemoDatabase
 
   def self.create(title, description)
     memo_list = all
-    memo = Memo.new(SecureRandom.uuid, title, description)
+    memo = Memo.new(id: SecureRandom.uuid, title: title, description: description)
     memo_list.push(memo)
     save_file(memo_list)
   end
