@@ -12,12 +12,12 @@ class Memo
     @description = args[:description]
   end
 
-  def as_json(*)
+  def as_json
     {
-      JSON.create_id => self.class.name,
-      'id' => id,
-      'title' => title,
-      'description' => description
+      JSON.create_id.intern => self.class.name,
+      :id => id,
+      :title => title,
+      :description => description
     }
   end
 
