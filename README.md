@@ -9,9 +9,14 @@
 - メモの一覧表示
 - メモの詳細表示
 - メモの変更
-- JSONにメモを保存
+- メモの保存
 
 ### ローカルでの実行方法
+
+必須要件
+
+- pgライブラリはPostgreSQLを使用するため、PostgreSQLがインストールされている必要があります。
+    - [PostgreSQLのインストール方法](https://www.postgresql.org/download/)
 
 1. gem パッケージを取得
 
