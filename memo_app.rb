@@ -37,15 +37,10 @@ get '/memos/:id/edit' do
   erb :edit
 end
 
-# 404
-get '/*' do
-  erb :not_found
-end
-
 patch '/memos/:id' do
   id = params[:id]
   @memo = MemoDatabase.find(id)
-  redirect :not_found if @memo.nil?
+  pass if @memo.nil?
 
   title = params[:title]
   description = params[:description]
@@ -58,4 +53,18 @@ delete '/memos/:id' do
   id = params[:id]
   MemoDatabase.delete(id)
   redirect :memos
+end
+
+# 404
+get '/*' do
+  show_not_found
+end
+
+patch '/*' do
+  show_not_found
+end
+
+def show_not_found
+  status 404
+  erb :not_found
 end
