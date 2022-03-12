@@ -47,7 +47,7 @@ patch '/memos/:id' do
 
   title = params[:title]
   description = params[:description]
-  memo = Memo.new(id: id, title: title, description: description)
+  memo = Memo.new('id' => id, 'title' => title, 'description' => description)
   MemoDatabase.update(memo)
   redirect :memos
 end
