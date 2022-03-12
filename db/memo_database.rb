@@ -19,7 +19,8 @@ class MemoDatabase
   end
 
   def self.connection
-    PG.connect(dbname: 'memo_app')
+    @connection = PG.connect(dbname: 'memo_app') if @connection.nil?
+    @connection
   end
 
   def self.find(id)
