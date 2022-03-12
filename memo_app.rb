@@ -3,7 +3,10 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'erubi'
+require 'pg'
 require_relative 'db/memo_database'
+
+MemoDatabase.initialize
 
 set :erb, escape_html: true
 
