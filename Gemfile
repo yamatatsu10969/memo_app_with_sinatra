@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'erubi'
+gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'thin'

@@ -9,9 +9,16 @@
 - メモの一覧表示
 - メモの詳細表示
 - メモの変更
-- JSONにメモを保存
+- メモの保存
 
 ### ローカルでの実行方法
+
+必須要件
+
+- pgライブラリはPostgreSQLを使用するため、PostgreSQLがインストールされている必要があります。
+    - [PostgreSQLのインストール方法](https://www.postgresql.org/download/)
+- PostgreSQLのデータベース 'memo_app' を作成してあること
+    - [PostgreSQLのデータベースの作成方法](https://www.webolve.com/basic/sql/create-db-and-table-postgresql/#link3)
 
 1. gem パッケージを取得
 
